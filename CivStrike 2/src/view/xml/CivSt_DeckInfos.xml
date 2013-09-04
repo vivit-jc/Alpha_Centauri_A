@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DeckInfos>
+    <DeckInfo>
+        <DeckType>DECKTYPE_UNIT</DeckType>
+        <DeckEra>ID_ERA_ANCIENT</DeckEra>
+        <IconIndex>13</IconIndex>
+    </DeckInfo>
+</DeckInfos>

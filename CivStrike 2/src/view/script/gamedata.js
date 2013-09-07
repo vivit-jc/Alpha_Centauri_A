@@ -15,34 +15,137 @@ ID_ERA_MODERN = 5;
 DECKTYPE_UNIT = 0;
 DECKTYPE_RESOURCE = 1;
 
-DeckContents = [
-                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'斧兵を３体追加',13],
-                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'槍兵を３体追加',14],
-                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'弓兵を３体追加',15],
-                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'騎兵を３体追加',16],
-                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'ガレー船を３体追加',19],
+DeckContents = [//海洋ユニットは海持ってない文明どうするのって処理が面倒なので時代ボーナスから外しました。
+                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'槍兵',2],
+                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'弓兵',2],
+                [DECKTYPE_UNIT,ID_ERA_ANCIENT,'チャリオット',2],
                 
-                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'軍団兵を４体追加',26],
-                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'重装歩兵を４体追加',27],
-                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'複合弓兵を４体追加',28],
-                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'弓騎兵を４体追加',29],
-                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'カタパルトを４体追加',30],
-                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'三段櫂船を４体追加',33],
+                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'重装兵',3],
+                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'複合弓兵',3],
+                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'弓騎兵',3],
+                [DECKTYPE_UNIT,ID_ERA_CLASSICAL,'カタパルト',3],
                 
-                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'長剣士を5体追加',39],
-                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'長槍兵を5体追加',40],
-                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'長弓兵を5体追加',41],
-                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'騎士を5体追加',42],
-                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'キャラベル船を5体追加',45],
-                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'ガレオン船を5体追加',46],
+                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'長槍兵',4],
+                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'長弓兵',4],
+                [DECKTYPE_UNIT,ID_ERA_MEDIEVAL,'騎士',4],
 
-                [DECKTYPE_RESOURCE,ID_ERA_ANCIENT,'食料を100追加',1],
-                [DECKTYPE_RESOURCE,ID_ERA_ANCIENT,'生産を100追加',2],
-                [DECKTYPE_RESOURCE,ID_ERA_ANCIENT,'金銭を100追加',3],
-                [DECKTYPE_RESOURCE,ID_ERA_CLASSICAL,'食料を200追加',1],
-                [DECKTYPE_RESOURCE,ID_ERA_CLASSICAL,'生産を200追加',2],
-                [DECKTYPE_RESOURCE,ID_ERA_CLASSICAL,'金銭を200追加',3]
+                [DECKTYPE_UNIT,ID_ERA_RENAISSANCE,'戦列兵',5],
+                [DECKTYPE_UNIT,ID_ERA_RENAISSANCE,'ライフル兵',5],
+                [DECKTYPE_UNIT,ID_ERA_RENAISSANCE,'騎兵隊',5],
+                [DECKTYPE_UNIT,ID_ERA_RENAISSANCE,'カノン砲',5],
+
+                [DECKTYPE_UNIT,ID_ERA_INDUSTRIAL,'歩兵',6],
+                [DECKTYPE_UNIT,ID_ERA_INDUSTRIAL,'機関銃兵',6],
+                [DECKTYPE_UNIT,ID_ERA_INDUSTRIAL,'戦車',6],
+                [DECKTYPE_UNIT,ID_ERA_INDUSTRIAL,'長距離砲',6],
+
+                [DECKTYPE_RESOURCE,ID_ERA_ANCIENT,'食料',100,0],
+                [DECKTYPE_RESOURCE,ID_ERA_ANCIENT,'生産',100,1],
+                [DECKTYPE_RESOURCE,ID_ERA_ANCIENT,'金銭',100,2],
+                [DECKTYPE_RESOURCE,ID_ERA_CLASSICAL,'食料',200,0],
+                [DECKTYPE_RESOURCE,ID_ERA_CLASSICAL,'生産',200,1],
+                [DECKTYPE_RESOURCE,ID_ERA_CLASSICAL,'金銭',200,2],
+                [DECKTYPE_RESOURCE,ID_ERA_MEDIEVAL,'食料',400,0],
+                [DECKTYPE_RESOURCE,ID_ERA_MEDIEVAL,'生産',400,1],
+                [DECKTYPE_RESOURCE,ID_ERA_MEDIEVAL,'金銭',400,2],
+                [DECKTYPE_RESOURCE,ID_ERA_RENAISSANCE,'食料',600,0],
+                [DECKTYPE_RESOURCE,ID_ERA_RENAISSANCE,'生産',600,1],
+                [DECKTYPE_RESOURCE,ID_ERA_RENAISSANCE,'金銭',600,2],
+                [DECKTYPE_RESOURCE,ID_ERA_INDUSTRIAL,'食料',800,0],
+                [DECKTYPE_RESOURCE,ID_ERA_INDUSTRIAL,'生産',800,1],
+                [DECKTYPE_RESOURCE,ID_ERA_INDUSTRIAL,'金銭',800,2],
+                [DECKTYPE_RESOURCE,ID_ERA_MODERN,'食料',1000,0],
+                [DECKTYPE_RESOURCE,ID_ERA_MODERN,'生産',1000,1],
+                [DECKTYPE_RESOURCE,ID_ERA_MODERN,'金銭',1000,2]
                 ];
+UNITTYPE_SETTLER = 0;
+UNITTYPE_MELEE = 1;
+UNITTYPE_SHOOTER = 2;
+UNITTYPE_MOUNTED = 3;
+UNITTYPE_SIEGE = 4;
+UNITTYPE_NAVAL = 5;
+UNITTYPE_AIR= 6;
+UNITABILITY_BuildCity = 0;
+UNITTYPE_STRING = ['開拓','歩兵','射撃','機動','砲撃','海軍','空軍'];
+UNITTYPE_DESCRIPTION = [
+                        '[開拓] 都市の建造が可能',
+                        '[突撃] 歩兵ユニットの戦果を下げる',
+                        '[隊列] 騎兵ユニットの戦果を下げる',
+                        '[射撃] 突撃ユニットの戦果を下げる',
+                        '[側面攻撃] 砲撃の効果を下げる',
+                        '[砲撃] 戦闘効率を上昇させる',
+                        '[制海] 海上支援の効果を下げる',
+                        '[海上支援] 戦闘効率を上昇させる',
+                        '[妨害] 制海ユニットの戦果を下げる',
+                        '[制空] 爆撃の効果を下げる',
+                        '[爆撃] 戦闘効率を上昇させる',
+                        ''
+                        ];
+UNIT_DATA_INDEX_ATTACK = 3;
+UNIT_DATA_INDEX_ICON = 5;
+UNIT_DATA_INDEX_ABILITY = 6;
+UNIT_DATA = [//名前、ユニットタイプ、時代、戦闘、ハンマー、アイコン
+             
+             //防御用歩兵。対機動アンチの能力は時代とともに弱体化していくという。
+             ['槍兵',UNITTYPE_MELEE,ID_ERA_ANCIENT,3,50,11,[]],
+             ['重装兵',UNITTYPE_MELEE,ID_ERA_CLASSICAL,7,100,21,[]],
+             ['長槍兵',UNITTYPE_MELEE,ID_ERA_MEDIEVAL,15,200,31,[]],
+             ['戦列兵',UNITTYPE_MELEE,ID_ERA_RENAISSANCE,27,300,41,[]],
+             ['歩兵',UNITTYPE_MELEE,ID_ERA_INDUSTRIAL,40,400,51,[]],
+             ['戦闘工兵',UNITTYPE_MELEE,ID_ERA_MODERN,60,500,61,[]],
+             
+             //弓兵などの拠点防衛ユニット。長弓兵と機関銃がチート。
+             ['弓兵',UNITTYPE_SHOOTER,ID_ERA_ANCIENT,3,50,12,[]],
+             ['複合弓兵',UNITTYPE_SHOOTER,ID_ERA_CLASSICAL,7,100,22,[]],
+             ['長弓兵',UNITTYPE_SHOOTER,ID_ERA_MEDIEVAL,15,200,32,[]],
+             ['ライフル兵',UNITTYPE_SHOOTER,ID_ERA_RENAISSANCE,27,300,42,[]],
+             ['機関銃兵',UNITTYPE_SHOOTER,ID_ERA_INDUSTRIAL,40,400,52,[]],
+             ['機械化歩兵',UNITTYPE_SHOOTER,ID_ERA_MODERN,60,500,62,[]],
+
+             //機動部隊。序盤の役立たずっぷりは割とガチ
+             ['チャリオット',UNITTYPE_MOUNTED,ID_ERA_ANCIENT,3,50,13,[]],
+             ['弓騎兵',UNITTYPE_MOUNTED,ID_ERA_CLASSICAL,7,100,23,[]],
+             ['騎士',UNITTYPE_MOUNTED,ID_ERA_MEDIEVAL,15,200,33,[]],
+             ['騎兵隊',UNITTYPE_MOUNTED,ID_ERA_RENAISSANCE,27,300,43,[]],
+             ['戦車',UNITTYPE_MOUNTED,ID_ERA_INDUSTRIAL,40,400,53,[]],
+             ['機甲部隊',UNITTYPE_MOUNTED,ID_ERA_MODERN,60,500,63,[]],
+             
+             //砲撃。カタパさん頑張って！
+             ['投石兵',UNITTYPE_SIEGE,ID_ERA_ANCIENT,2,50,24,[]],
+             ['カタパルト',UNITTYPE_SIEGE,ID_ERA_CLASSICAL,5,100,24,[]],
+             ['トレブシェット',UNITTYPE_SIEGE,ID_ERA_MEDIEVAL,9,200,24],[],
+             ['カノン砲',UNITTYPE_SIEGE,ID_ERA_RENAISSANCE,18,300,44,[]],
+             ['長距離砲',UNITTYPE_SIEGE,ID_ERA_INDUSTRIAL,27,400,54,[]],
+             ['自走砲',UNITTYPE_SIEGE,ID_ERA_MODERN,40,500,64,[]],
+
+             
+             //制海権を握る用ユニット。
+             ['ガレー船',UNITTYPE_NAVAL,ID_ERA_ANCIENT,2,100,25,[]],
+             ['三段櫂船',UNITTYPE_NAVAL,ID_ERA_CLASSICAL,5,100,25,[]],
+             ['フリーゲート',UNITTYPE_NAVAL,ID_ERA_MEDIEVAL,9,300,45,[]],
+             ['戦列艦',UNITTYPE_NAVAL,ID_ERA_RENAISSANCE,18,300,45,[]],
+             ['戦艦',UNITTYPE_NAVAL,ID_ERA_INDUSTRIAL,27,600,55,[]],
+             ['ミサイル艦',UNITTYPE_NAVAL,ID_ERA_MODERN,40,600,65,[]],
+             
+             //制空ユニット。戦果には大きく影響しません。
+             ['******' ,0,0,1,1,1,1,1],
+             ['******' ,0,0,1,1,1,1,1],
+             ['******' ,0,0,1,1,1,1,1],
+             ['******' ,0,0,1,1,1,1,1],
+             ['戦闘機',UNITTYPE_AIR,ID_ERA_INDUSTRIAL,4,200,58,[]],
+             ['ジェット機',UNITTYPE_AIR,ID_ERA_MODERN,12,400,68,[]],
+             
+             ['開拓者' ,UNITTYPE_SETTLER,ID_ERA_ANCIENT,1,200,8,[UNITABILITY_BuildCity]]
+             
+             ];
+
+ID_ERA_ANCIENT = 0;
+ID_ERA_CLASSICAL = 1;
+ID_ERA_MEDIEVAL = 2;
+ID_ERA_RENAISSANCE = 3;
+ID_ERA_INDUSTRIAL = 4;
+ID_ERA_MODERN = 5;
+
 TILE_OCEAN = 0;
 TILE_GRASSLAND = 1;
 TILE_PLAIN = 2;

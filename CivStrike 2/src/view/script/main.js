@@ -10,8 +10,8 @@ function myGetEvent( evt ){
 }
 window.onload = function(){
 	//マウス変数の作成。コピペ。
-	mouse_x = 0;
-	mouse_y = 0;
+	var mouse_x = 0;
+	var mouse_y = 0;
 	window.document.onmousemove = function(evt){
 		if (evt){
 			mouse_x = evt.offsetX;
@@ -149,6 +149,7 @@ window.onload = function(){
 		//--------------------------------------------------------------------------
 	    // ラベル　
         
+
 		hex_triangle_sprites = new Array;
         for (i = 0; i < HexTri_WIDTH * HexTri_HEIGHT; i++) {
         	var x = (i % HexTri_WIDTH);
@@ -196,7 +197,7 @@ window.onload = function(){
 			scene_game.addChild(map_header_buttons[i]);
 		}
     }
-    game.start();
+    game.debug();
 
     //--------------------------------------------------------------------------
     //クラス定義
@@ -304,6 +305,7 @@ window.onload = function(){
 	   		this.hang = true;
 	   		this.x  = mouse_x - 12;
 	   		this.y = mouse_y - 27;
+            console.log("unit_ontouchmove",this.x,this.y);
 	   	},
 	   	ontouchend:function(){
 	   		this.hang = false;
